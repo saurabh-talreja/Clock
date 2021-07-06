@@ -21,7 +21,7 @@ jobs:
         uses: InsonusK/get-latest-release@v1.0.1
         with:
           myToken: ${{ secrets.GH_TOKEN }}
-          exclude_types: "release"
+          exclude_types: "draft|prerelease"
           view_top: 1
       - name: "Print result"
         run: |
