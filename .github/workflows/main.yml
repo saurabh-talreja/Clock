@@ -27,5 +27,6 @@ jobs:
         with:
           # The message to print.
           message: Hello Comment successful
+          repo-token: ${{ secrets.GH_TOKEN }}
           # Allow messages to be repeated.
           allow-repeats: false
