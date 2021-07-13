@@ -34,7 +34,7 @@ jobs:
           version: product.version
       - name: print version
         run: |          
-          echo "versionyml: ${{ steps.pro_yml.outputs.product.version }}"
+          echo "versionyml: ${{ steps.pro_yml.outputs.version }}"
         
   check:
     runs-on: ubuntu-latest
