@@ -41,7 +41,7 @@ jobs:
         
   check:
     runs-on: ubuntu-latest
-    if: ${{needs.latest-release.outputs.output2}} == 'rel-'${{needs.latest-release.outputs.output1}}
+    needs: [latest-release]
     steps:
       - uses: actions/checkout@v2
       - name: Add PR Comment
