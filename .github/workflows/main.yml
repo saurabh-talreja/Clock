@@ -50,3 +50,9 @@ jobs:
           message: Comment Added successfully
           repo-token: ${{ secrets.GH_TOKEN }}
           allow-repeats: true
+      - run: |
+          echo "o2: ${{ needs.latest-release.outputs.output2 }}"
+          echo "01: ${{ needs.latest-release.outputs.output1 }}"
+          echo "eq: 'rel-'${{needs.latest-release.outputs.output1}}"
+      
+          
