@@ -38,7 +38,7 @@ jobs:
         
   check:
     runs-on: ubuntu-latest
-    if: needs.latest-release.outputs.version == "rel-{{needs.latest-release.outputs.tag_name}}"
+    if: needs.latest-release.outputs.version == 'rel-2021.T06B'
     steps:
       - uses: actions/checkout@v2
       - name: Add PR Comment
