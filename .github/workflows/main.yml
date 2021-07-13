@@ -42,7 +42,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     needs: [latest-release]
-    if: ${{ needs.latest-release.outputs.output2 == 'rel-2021.T07b' }}
+    if: ${{ needs.latest-release.outputs.output2 == 'rel-'needs.latest-release.outputs.output1 }}
     steps:
       - uses: actions/checkout@v2
       - name: Add PR Comment
