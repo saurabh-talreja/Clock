@@ -38,7 +38,7 @@ jobs:
         
   check:
     runs-on: ubuntu-latest
-    if: ${{ steps.pro_yml.outputs.version }} == "rel-" ${{ steps.last_release.outputs.tag_name }}"
+    if: steps.pro_yml.outputs.version == "rel-{{steps.last_release.outputs.tag_name}}"
     steps:
       - uses: actions/checkout@v2
       - name: Add PR Comment
