@@ -42,7 +42,6 @@ jobs:
   check:
     runs-on: ubuntu-latest
     needs: [latest-release]
-    if: ${{ needs.latest-release.outputs.output2 == needs.latest-release.outputs.output1 }}
     steps:
       - uses: actions/checkout@v2
       - name: Add PR Comment
@@ -54,6 +53,5 @@ jobs:
       - run: |
           echo "o2: ${{ needs.latest-release.outputs.output2 }}"
           echo "01: ${{ needs.latest-release.outputs.output1 }}"
-          echo "eq: rel-${{needs.latest-release.outputs.output1}}"
       
           
