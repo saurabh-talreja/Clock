@@ -14,6 +14,9 @@ on:
 jobs:
   latest-release:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{steps.last_release.outputs.tag_name}}
+      output2: ${{steps.pro_yml.outputs.version}}
     steps:
       - uses: actions/checkout@v2
       - name: "call action"
@@ -38,7 +41,7 @@ jobs:
         
   check:
     runs-on: ubuntu-latest
-    if: needs.latest-release.outputs.version == 'rel-2021.T06b'
+    if: needs.latest-release.outputs.output2 == 'rel-2021.T06b'
     steps:
       - uses: actions/checkout@v2
       - name: Add PR Comment
