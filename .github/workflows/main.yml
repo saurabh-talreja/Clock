@@ -18,8 +18,9 @@ jobs:
       output1: 'rel-${{steps.last_release.outputs.tag_name}}'
       output2: ${{steps.pro_yml.outputs.version}}
     steps:
-      - uses: actions/checkout@v2
-      - name: "call action"
+      - name: Checkouts the code
+        uses: actions/checkout@v2
+      - name: "Get Latest Release"
         id: last_release
         uses: InsonusK/get-latest-release@v1.0.1
         with:
@@ -38,18 +39,14 @@ jobs:
       - name: print version
         run: |          
           echo "versionyml: ${{ steps.pro_yml.outputs.version }}"
-        
-  check:
-    runs-on: ubuntu-latest
-    needs: [latest-release]
-    if: ${{ needs.latest-release.outputs.output2 == needs.latest-release.outputs.output1 }}
-    steps:
-      - uses: actions/checkout@v2
       - name: Add PR Comment
+        if: ${{ contains(steps.pro_yml.outputs.version,steps.last_release.outputs.tag_name) }}
         uses: mshick/add-pr-comment@v1
         with:
           message: Comment Added successfully
           repo-token: ${{ secrets.GH_TOKEN }}
           allow-repeats: false
+        
+ 
       
           
