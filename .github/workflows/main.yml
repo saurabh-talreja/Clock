@@ -21,7 +21,8 @@ jobs:
       - name: Checkouts the code
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+      - run: git checkout HEAD^
       - name: "Get Latest Release"
         id: last_release
         uses: InsonusK/get-latest-release@v1.0.1
